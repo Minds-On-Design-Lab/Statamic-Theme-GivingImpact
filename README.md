@@ -89,12 +89,12 @@ Add the following to your `_config\routes.yaml` file.
 
 Make sure you set the Campaign to use Giving Opportunities as pictured below and then feel free to explore the other settings and how they work with the site.
 
-![Giving Impact - Screen](/readme-imgs/gi_camp_setup.png)
+![Giving Impact - Screen](/readme-imgs/camp_setup.png)
 
 4. Finally you need to get your Campaign's token and add that to the theme.yaml file in the `_themes/campaign-boilerplate` folder.
 
 You can find the token from the Giving Impact dashboard as highlighted below.
-![Giving Impact - Screen](/readme-imgs/gi_token.png)
+![Giving Impact - Screen](/readme-imgs/token.png)
 
 5. Okay time to explore and see what Giving Impact and this theme can do. Then go make them your own from here.
 
