@@ -57,7 +57,7 @@ Key Details
 
 To install the theme follow the instructions below.
 
-1. [Install Statamic:](http://statamic.com/learn/digging-in/installing) **Don't forget to set up your .htaccess file**.
+1. [Install Statamic](http://statamic.com/learn/digging-in/installing).
 2. Copy the campaign-boilerplate theme folder to your _themes folder.
 3. Download and install the [Statamic Giving Impact Plugin](https://github.com/Minds-On-Design-Lab/Statamic-Plugin-GivingImpact) Plugin
  * You will need a Giving Impact account and API keys. To Request a free developer account please [contact Giving Impact to request one](http://givingimpact.com/contact)
