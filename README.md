@@ -32,6 +32,8 @@ The following are some key details about this theme, it's use of Statamic, and G
 
 ### About the Fundraiser
 
+![Homepage - Screen](/readme-imgs/home_w_data.png)
+
 This theme is a boilerplate, a lightweight working but ready to be designed and tweaked to your unique online fundraising needs.
 
 It's designed to harness the power of Giving Impact's online fundraising API (that works with Stripe.com) and the awesome speed and flexibility of Statamic's CMS platform to allow you to set up the core of team/advocate campaign site in minutes.
