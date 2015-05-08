@@ -52,6 +52,7 @@ Key Details
 
 * The theme uses [Skeleton](http://getskeleton.com/) which is a very lightweight responsive front end boilerplate.
 * The theme uses Statamic's Member functionality. In order to create a team/fundraiser page, you must register to create a member account.
+* The `money` plugin is a simple modifier used in the them to convert money data returned by Giving Impact in cents to something more human.
 
 ## Statamic Install
 
@@ -63,6 +64,7 @@ To install the theme follow the instructions below.
  * You will need a Giving Impact account and API keys. To Request a free developer account please [contact Giving Impact to request one](http://givingimpact.com/contact)
 5. This theme does require specific content. You will need to delete the contents of your existing _content folder and copy the files and folders from the this theme's _content folder.
 6. In your Statamic install go to `_config` settings YAML file and change the `_theme` name to `campaign-boilerplate`
+7. Add the `money` plugin found in `_add-ons/money` to your Statamic `_add-ons` folder.
 
 **IMPORTANT - Security - If using this theme in production with a paying Giving Impact subscription, the website must be hosted with SSL**
 
