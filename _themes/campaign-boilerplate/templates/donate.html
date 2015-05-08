@@ -1,0 +1,105 @@
+<div class="row">
+  <div class="twelve columns">
+		<h1>{{ title }}</h1>
+    {{ content }}
+  	<hr />
+		{{givingimpact:donate_form
+		  campaign="{ campaign_id_token }"
+		  return="donate/thank-you"
+		}}
+
+    {{ if campaign_status }}
+    <!-- If campaign is active -->
+
+    {{ if form_errors }}
+      There are some problems with the information provided:
+      <ul>
+      {{form_errors}}
+      	<li>{{error}}</li>
+      {{/form_errors}}
+    	</ul>
+  	{{ endif }}
+  </div>
+</div>
+<div class="row">
+  <div class="six columns">
+    <h4>Donation Information</h4>
+
+    <!-- Donation levels or Open Donation -->
+    <label class="required">Donation Amount:</label>
+    {{ if campaign_enable_donation_levels }}
+      {{ campaign_donation_levels }}
+      <label for="radio1"><input type="radio" name="donation_level_id" value="{{ donation_levels_level_id }}"> ${{ donation_levels_amount|format_number:2 }} - {{ donation_levels_label }}</label>
+      {{ /campaign_donation_levels }}
+    {{ else }}
+      $&nbsp;<input type="text" name="donation_amount" value="{{value_donation_amount}}" />&nbsp;.00
+    {{ endif }}
+
+    <label class="required">First Name:</label>
+    <input type="text" name="first_name" value="{{value_first_name}}" />
+
+    <label class="required">Last Name:</label>
+    <input type="text" name="last_name" value="{{value_last_name}}" />
+
+    <label class="required">Email:</label>
+    <input type="text" name="email" value="{{value_email}}" />
+    <label><input type="checkbox" value="1" name="contact" checked /> You may contact me with future updates</label>
+
+    <!-- Custom Donation Fields -->
+    {{ if campaign_custom_fields|empty }}
+    {{ else }}
+      {{ campaign_custom_fields }}
+        {{ if custom_fields_status }}
+          <label{{ if custom_fields_required }} class="required"{{ endif }}>{{ custom_fields_field_label }}</label>
+          {{ if custom_fields_field_type == "text" }}
+            <input type="text" name="fields[{{ custom_fields_field_id }}]">
+          {{ endif }}
+          {{ if custom_fields_field_type == "dropdown" }}
+            <select name="fields[{{ custom_fields_field_id }}]">
+              <option value=""></option>
+            {{ custom_fields_options }}
+              <option value="{{ value }}">{{ value }}</option>
+            {{ /custom_fields_options }}
+            </select>
+          {{ endif }}
+        {{ endif }}
+      {{ /campaign_custom_fields }}
+    {{ endif }}
+
+  </div>
+  <div class="six columns">
+    <h4>Payment Information</h4>
+
+    <label class="required">Address:</label>
+    <input type="text" name="street" value="{{value_street}}" placeholder="Street Address" />
+    <input type="text" name="city" value="{{value_city}}" placeholder="City" />
+    <input type="text" name="state" value="{{value_state}}" placeholder="State" />
+    <input type="text" name="zip" value="{{value_zip}}" placeholder="Zip" />
+
+    <label class="required">CC Number:</label>
+    <input type="text" name="cc_number" placeholder="1234 5679 9012 3456" />
+
+    <label class="required">CVC:</label>
+    <input type="text" name="cc_cvc" placeholder="Security code" />
+
+    <label class="required">CC EXP (MM/YYYY):</label>
+    <input type="text" name="cc_exp" placeholder="MM / YYYY" />
+  </div>
+</div>
+<div class="row">
+  <div class="twelve columns">
+    <hr />
+    <input type="submit" value="Donate" id="process-donation" class="button button-primary" />
+  </div>
+</div>
+
+  {{ else }}
+    <!-- Campaign is not active -->
+    <p class="notice">This campaign is currently inactive and not accepting donations.</p>
+    </div>
+  </div>
+  {{ endif }}
+{{/givingimpact:donate_form}}
+
+<!-- donate_js provides automatic Stripe integration and formatting, along with Stripe error handling -->
+{{givingimpact:donate_js}}

@@ -1,0 +1,11 @@
+<meta name='keywords' content='{{ meta_keywords }}{{ if meta_keywords}}, {{ endif }}{{default_meta_keywords}}' />
+<meta name='description' content='{{ if meta_description }}{{ meta_description }}{{ else }}{{default_meta_description}}{{ endif }}' />
+<link rel='canonical' href='{{ permalink }}' />
+
+<!--Open Graph Tags-->
+<meta property="og:site_name" content="{{ _site_name }}"/>
+<meta property="og:title" content="{{ if title != 'Home' }}{{ title }} | {{ endif }}{{ _site_name }}"/>
+<meta property="og:url" content="{{ permalink }}"/>
+<meta property="og:description" content="{{ if meta_description }}{{ meta_description }}{{ else }}{{default_meta_description}}{{ endif }}"/>
+<meta property="og:type" content="website"/>
+<meta property="fb:admin" content="0"/>

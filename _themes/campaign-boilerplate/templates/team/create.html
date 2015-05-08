@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="large-12 columns">
+    <h1 class="page-title">{{ title }}</h1>
+    <div class="page-content userstyles">
+      {{ content }}
+
+      {{givingimpact:opportunity_form campaign="{ campaign_id_token }" return="/teams/detail"}}
+
+          {{ member:profile }}
+          <input type="hidden" name="supporter_first_name" value="{{ first_name }}"/>
+          <input type="hidden" name="supporter_last_name" value="{{ last_name }}"/>
+          <input type="hidden" name="supporter_email" value="{{ email }}"/>
+          {{ /member:profile }}
+
+          {{ if form_errors }}
+              <p>Something is not quite right yet</p>
+              {{form_errors}}
+                  {{error}}
+              {{/form_errors}}
+          {{endif}}
+
+          {{opportunity}}
+              Awesome! Your Giving Opportunity, {{opportunity_title}} has been created!
+          {{/opportunity}}
+
+          <label>Title</label>
+          <input type="text" name="title" value="{{value_title}}" />
+
+          <label>Description</label>
+          <textarea name="description" rows="5" cols="50">{{value_description}}</textarea>
+
+          <label>Donation Target</label>
+          <input type="text" name="target" value="{{value_target}}" />
+
+          <label>Team Photo</label>
+          <input type="file" name="image" />
+
+          {{campaign_campaign_fields}}
+              {{if campaign_fields_status}}
+                  <label>{{campaign_fields_field_label}}</label>
+                  {{if campaign_fields_field_type == "dropdown"}}
+                      <select name="fields[{{campaign_fields_field_id}}]">
+                        <option value="">--Select One--</option>
+                        {{campaign_fields_options}}
+                        <option value="{{value}}">{{value}}</option>
+                        {{/campaign_fields_options}}
+                      </select>
+                  {{else}}
+                      <input type="text" name="fields[{{campaign_fields_field_id}}]" />
+                  {{endif}}
+                  <br />
+              {{endif}}
+          {{/campaign_campaign_fields}}
+          <hr />
+
+          <input type="submit" value="Create Your Team Page" class="button button-primary" />
+
+      {{/givingimpact:opportunity_form}}
+    </div>
+  </div>
+</div>

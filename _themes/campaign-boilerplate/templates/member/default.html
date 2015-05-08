@@ -1,0 +1,78 @@
+{{if !logged_in }}
+  {{ redirect url="teams/register" }}
+{{ endif }}
+  {{ member:profile }}
+  <div class="row">
+    <div class="twelve columns">
+      <div>
+        <h1>{{ title }}</h1>
+        {{ content }}
+      </div>
+      <hr />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="nine columns">
+      <table class="u-full-width">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Goal</th>
+            <th>Current Total</th>
+            <th>Donations</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ givingimpact:opportunities supporter="{{ email }}" }}
+          <tr>
+            <td><a href="{{ path src="teams/{{ opportunity_id_token }}/detail" }}">{{ opportunity_title }}</a></td>
+            <td>${{ opportunity_donation_target|format_number:2 }}</td>
+            <td>${{ opportunity_donation_total|format_number:2}}</td>
+            <td>{{ opportunity_total_donations|format_number}}</td>
+          </tr>
+          {{ /givingimpact:opportunities }}
+        </tbody>
+      </table>
+
+      <h3>My Donation(s)</h3>
+      <table class="u-full-width">
+        <thead>
+          <tr>
+            <th>Donation Date</th>
+            <th>Campaign</th>
+            <th>Team</th>
+            <th>Donation Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ givingimpact:donations supporter="{{ email }}" related="true" sort="donation_date|desc" }}
+          <tr>
+            <td>{{ donation_donation_date format="F d, Y"}}</td>
+            <td>
+              {{ if donation_opportunity }}
+                {{ donation_opportunity }} {{opportunity_campaign}} {{campaign_title}} {{/opportunity_campaign}} {{ /donation_opportunity }}
+              {{ else }}
+                {{ donation_campaign }} {{ campaign_title }} {{ /donation_campaign }}
+              {{ endif }}
+            </td>
+            <td>
+              {{ if donation_opportunity }}
+                {{ donation_opportunity }} {{opportunity_title}} {{ /donation_opportunity }}
+              {{ else }}
+                &nbsp;
+              {{ endif }}
+            </td>
+            <td>${{ donation_donation_total|format_number:2}}</td>
+          </tr>
+          {{ /givingimpact:donations }}
+        </tbody>
+      </table>
+    </div>
+    <div class="three columns">
+      <h5>My Info</h5>
+      <p>{{ first_name }} {{ last_name }}<br />
+      {{ email }}</p>
+    </div>
+  </div>
+  {{ /member:profile }}

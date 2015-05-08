@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="twelve columns">
+    <div>
+      <h1>{{ title }}</h1>
+      {{ content }}
+    </div>
+    <hr />
+  </div>
+</div>
+<div class="row">
+  <div class="nine columns">
+
+    <h2>Full Team List</h2>
+    <p>Our thanks go out to all of the teams supporting our cause. You rock!</p>
+    <table class="u-full-width">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Goal</th>
+          <th>Current Total</th>
+          <th>Donations</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{ givingimpact:opportunities campaign="{ campaign_id_token }" sort="title|asc" }}
+        <tr>
+          <td><a href="{{ path src="teams/{{ opportunity_id_token }}/detail" }}">{{ opportunity_title }}</a></td>
+          <td>${{ opportunity_donation_target|money:2 }}</td>
+          <td>${{ opportunity_donation_total|money:2}}</td>
+          <td>{{ opportunity_total_donations|format_number}}</td>
+        </tr>
+        {{ /givingimpact:opportunities }}
+      </tbody>
+    </table>
+  </div>
+  <div class="three columns">
+    <h5>Start Your Own Team!</h5>
+    {{ if logged_in }}
+    <a href="{{ path src="teams/create" }}" class="button">Create a Team!</a>
+    {{ else }}
+    <a href="{{ path src="teams/register" }}" class="button">Create a Team!</a>
+    {{ endif }}
+  </div>
+</div>

@@ -1,0 +1,58 @@
+---
+title: Team
+---
+
+{{givingimpact:opportunities opportunity="{{ token or get:opportunity }}"}}
+<div class="row">
+  <div class="twelve columns">
+    <h2>Team: {{ opportunity_title }}</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="nine columns">
+    <h3>Why we are fundraising?</h3>
+    {{ if opportunity_image_url }}
+    <img src="{{ opportunity_image_url }}" alt="{{ opportunity_title }}" class="team-image" />
+    {{ endif }}
+    <p>{{ opportunity_description|nl2br }}</p>
+    <h4>Thank you!</h4>
+    <table class="u-full-width">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Donation Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{ givingimpact:donations opportunity="{ token|sanitize }" }}
+
+        <tr>
+          <td>{{ donation_first_name }} {{ donation_last_name }}</td>
+          <td>${{ donation_donation_total|money:2}}</td>
+        </tr>
+        {{ /givingimpact:donations }}
+      </tbody>
+    </table>
+
+  </div>
+  <div class="three columns">
+
+    <a class="button button-primary u-full-width" href="{{ path src="teams/{{ token|sanitize or get:opportunity }}/donate"}}">Donate Now</a>
+
+    {{ if opportunity_supporters|empty }}
+    {{ else }}
+    <hr />
+    <h5>Team Leader(s)</h5>
+    <ul>
+    {{ opportunity_supporters }}
+      <li>
+        {{ supporters_first_name }} {{ supporters_last_name }}
+      </li>
+    {{ /opportunity_supporters }}
+    </ul>
+    {{ endif }}
+  </div>
+</div>
+
+{{/givingimpact:opportunities}}

@@ -1,0 +1,6 @@
+<h4 class="sidebar-title st1">Tags</h4>
+<ul class="tag-list st1 ly1">
+  {{ taxonomy:listing folder="updates" type="tags" }}
+    <li><a class="tag st1 ly1 {{ if segment_3 == name }}{{ title }}active{{ endif }}" href="{{ url }}">{{ name }} ({{ results }})</a></li>
+  {{ /taxonomy:listing }}
+</ul>

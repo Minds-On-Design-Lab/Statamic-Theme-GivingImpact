@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="twelve columns">
+    <div>
+      <h1>{{ title }}</h1>
+      {{ content }}
+    </div>
+    <hr />
+  </div>
+</div>
+<div class="row">
+  <div class="six columns">
+    <h2>Login To Access Your Team</h2>
+    {{ member:login_form return="/member" }}
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="username">
+
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password">
+
+      <p><input type="submit" class="button button-primary" value="Log in &raquo;"></p>
+    {{ /member:login_form }}
+  </div>
+  <div class="six columns">
+    <h2>Register</h2>
+    {{ member:register_form return="/teams/create" }}
+    {{ if error }}
+    <p class="error">{{ error }}</p>
+    {{ endif }}
+
+
+    <label for="username">Username:</label>
+    <input type="text" name="username" value="{{ old_values:username }}" id="username">
+    {{ if field_errors:username }}
+      <small class="error">{{ field_errors:username }}</small>
+    {{ endif }}
+
+    <label for="username">First Name:</label>
+    <input type="text" name="first_name" value="{{ old_values:first_name }}" id="first_name">
+    {{ if field_errors:first_name }}
+      <small class="error">{{ field_errors:first_name }}</small>
+    {{ endif }}
+
+    <label for="username">Last Name:</label>
+    <input type="text" name="last_name" value="{{ old_values:last_name }}" id="last_name">
+    {{ if field_errors:last_name }}
+      <small class="error">{{ field_errors:last_name }}</small>
+    {{ endif }}
+
+    <label for="email">Email:</label>
+    <input type="text" name="email" value="{{ old_values:email }}" id="email">
+    {{ if field_errors:email }}
+    <small class="error">{{ field_errors:email }}</small>
+    {{ endif }}
+
+    <label for="password">Password:</label>
+    <input type="password" name="password" value="" id="password">
+    {{ if field_errors:password }}
+    <small class="error">{{ field_errors:password }}</small>
+    {{ endif }}
+
+    <label for="password_confirmation">Password Again:</label>
+    <input type="password" name="password_confirmation" value="" id="password_confirmation">
+    {{ if field_errors:password_confirmation }}
+    <small class="error">{{ field_errors:password_confirmation }}</small>
+    {{ endif }}
+
+    <p><input type="submit" name="Submit" class="button-primary" value="Register &amp; Continue &raquo;"></p>
+
+    {{ /member:register_form }}
+  </div>
+</div>

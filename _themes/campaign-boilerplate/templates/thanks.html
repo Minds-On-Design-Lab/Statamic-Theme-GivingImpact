@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="twelve columns">
+    <h1>{{ title }}</h1>
+    <hr>
+  </div>
+</div>
+<div class="row">
+  <div class="nine columns">
+
+    {{ content }}
+  </div>
+
+  <div class="three columns">
+    <h5>Your Donation</h5>
+    {{ givingimpact:donations donation="{{ get:donation }}" related="true" }}
+      <p><strong>{{ donation_campaign }} {{ campaign_title }} {{ /donation_campaign }}</strong><br>
+      ${{ donation_donation_total|format_number:2}}
+      </p>
+    {{ /givingimpact:donations }}
+  </div>
+</div>

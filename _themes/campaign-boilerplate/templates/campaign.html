@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="large-12 columns">
+
+		<div class="page-content userstyles">
+
+			{{givingimpact:campaigns campaign="{ globals:giving_impact_campaign }"}}
+
+			<h1>{{ campaign_title }}</h1>
+			<p>{{ campaign_description|markdown }}</p>
+
+			<h2>Key Stats</h2>
+			<ul>
+				{{if campaign_display_donation_target}}<li><strong>Goal:</strong> ${{ campaign_donation_target|format_number:2}}</li>{{ endif }}
+				<li><strong>Current Total:</strong> ${{ campaign_donation_total|format_number:2}}</li>
+				<li><strong>Total Number of Donations:</strong> {{ campaign_total_donations|format_number}}</li>
+			</ul>
+			{{/givingimpact:campaigns}}
+      <h2>Giving Opportunities</h2>
+
+      <ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-3">
+        {{ givingimpact:opportunities campaign="{ globals:giving_impact_campaign }" }}
+        <li>
+          <div class="panel">
+          <h3>{{ opportunity_title }}</h3>
+          <p>{{ opportunity_description|nl2br|truncate:100 }}</p>
+          <ul>
+            <li><strong>Goal:</strong> ${{ opportunity_donation_target|format_number:2 }}</li>
+            <li><strong>Current Total:</strong> ${{ opportunity_donation_total|format_number:2}}</li>
+            <li><strong>Total Number of Donations:</strong> {{ opportunity_total_donations|format_number}}</li>
+          </ul>
+          </div>
+        </li>
+        {{ /givingimpact:opportunities }}
+      </ul>
+
+      <p><a href="{{ path src="campaign-page/create-campaign" }}" class="button radius secondary">Create Your Campaign Page</a>
+      <h2>Donation Log</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Name</th>
+						<th>Amount</th>
+					</tr>
+				</thead>
+				<tbody>
+			{{ givingimpact:donations campaign="{ globals:giving_impact_campaign }" limit="100" sort="donation_date|desc" }}
+					<tr>
+						<td>{{donation_donation_date format="M d, Y"}}</td>
+						<td>{{donation_first_name}}</td>
+						<td>${{donation_donation_total|format_number:2}}</td>
+					</tr>
+			{{/givingimpact:donations}}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</div>

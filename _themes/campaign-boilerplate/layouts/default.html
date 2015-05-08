@@ -1,0 +1,66 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ if title != 'Home' }}{{ title }} | {{ endif }}{{ _site_name }}</title>
+    <link rel="shortcut icon" href="{{ theme:img src="favicon.ico"}}" />
+
+    <!-- Font -->
+    <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+
+    <!-- CSS -->
+    {{ theme:css src="normalize" tag="true" }}
+    {{ theme:css src="skeleton" tag="true" }}
+    {{ theme:css src="site" tag="true" }}
+
+    <!-- Scripts -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    {{ if !disable_analytics}}
+      <!-- analytics snippet here -->
+    {{ endif }}
+  </head>
+  <body>
+
+    <header>
+      <h1><a href="{{ homepage }}">{{ _site_name }}</a></h1>
+      <nav>
+        <div class="container">
+          <div class="row">
+            <div class="twelve columns">
+              <ul>
+                <li><a href="{{ homepage }}">Home</a></li>
+                {{ nav from="/" max_depth="2" folders_only="false" }}
+                <li {{ if is_current || is_parent }}class="active"{{ endif }}>
+                   <a href="{{ url }}">{{ title|smartypants|widont }}</a>
+                </li>
+                {{ /nav }}
+                {{ if logged_in }}
+                <li><a href="{{ member:logout_url }}">Log Out</a></li>
+                {{ endif }}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+
+    <main>
+      <div class="container">
+        {{ layout_content }}
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="twelve columns">
+            <p>&copy;{{ current_date format="Y" }} Organization Name</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

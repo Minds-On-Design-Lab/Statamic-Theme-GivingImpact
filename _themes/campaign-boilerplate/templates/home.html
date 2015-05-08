@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="twelve columns">
+  	<div>
+  		{{ content }}
+
+      <!-- Check and display of progress and target -->
+      {{ givingimpact:campaigns campaign="{ campaign_id_token }" }}
+        {{ if campaign_display_donation_total }}<p><strong>Current Total</strong>: ${{ campaign_donation_total|money:2 }}</p>{{ endif }}
+        {{ if campaign_display_donation_target }}<p><strong>Goal</strong>: ${{ campaign_donation_target|money:2 }}</p>{{ endif }}
+      {{ /givingimpact:campaigns }}
+  	</div>
+
+    <hr />
+    <h2>Top Teams</h2>
+    <p>Click to view their fundraising page to learn more about and support one of our great teams! <a href="{{ path src="teams" }}">View them all &raquo;</a></p>
+    <table class="u-full-width">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Goal</th>
+          <th>Current Total</th>
+          <th>Donations</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{ givingimpact:opportunities limit="3" sort="donation_total|desc" campaign="{ campaign_id_token }" }}
+        <tr>
+          <td><a href="{{ path src="teams/{{ opportunity_id_token }}/detail" }}">{{ opportunity_title }}</a></td>
+          <td>${{ opportunity_donation_target|money:2 }}</td>
+          <td>${{ opportunity_donation_total|money:2 }}</td>
+          <td>{{ opportunity_total_donations|format_number }}</td>
+        </tr>
+        {{ /givingimpact:opportunities }}
+      </tbody>
+    </table>
+    <a href="{{ path src="teams/register" }}" class="button">Create a Team!</a>
+    <hr>
+    <h2>Recent Donations</h2>
+    <table class="u-full-width">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Team</th>
+          <th>Donation Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{ givingimpact:donations campaign="{ campaign_id_token }" limit="5" sort="donation_date|desc" related="true" }}
+
+        <tr>
+          <td>{{ donation_first_name }} {{ donation_last_name }}</td>
+          <td>{{ if donation_opportunity }}{{ donation_opportunity }} <a href="{{ path src="teams/{{ opportunity_id_token }}/detail" }}">{{ opportunity_title }}</a> {{ /donation_opportunity }}{{ endif }}</td>
+          <td>${{ donation_donation_total|money:2}}</td>
+        </tr>
+        {{ /givingimpact:donations }}
+      </tbody>
+    </table>
+    <a href="{{ path src="donate" }}" class="button">Donate Now</a>
+  </div>
+</div>
