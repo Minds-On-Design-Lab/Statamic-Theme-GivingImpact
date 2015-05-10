@@ -11,10 +11,10 @@ For more about Giving Impact and to view our full documentation and learning res
 
 ### Theme Credits
 
-**Developed By:** Minds On Design Lab - http://mod-lab.com
-**Version:** 1.0
-**Copyright:** Copyright &copy; 2010-2015 Minds On Design Lab
-**License:** Licensed under the MIT license - Please refer to LICENSE
+* **Developed By:** Minds On Design Lab - http://mod-lab.com
+* **Version:** 1.0
+* **Copyright:** Copyright &copy; 2010-2015 Minds On Design Lab
+* **License:** Licensed under the MIT license - Please refer to LICENSE
 
 ## Requirements
 
@@ -42,7 +42,7 @@ Key Details
 
 * You can donate to the campaign as a whole or member created "teams".
 * "Team" pages can be created from the site by site members.
-  * Creates a "Giving Opportunity" within the site's camapign in Giving Impact with the member associated with it via email.
+  * Creates a "Giving Opportunity" within the site's campaign in Giving Impact with the member associated with it via email.
 * Donations forms are fully integrated, seamlessly in the site.
   * Using Giving Impact's hosted dashboard, campaign managers can enable donation levels, automated email receipts, custom donation fields to capture data from donors and have all these functionality reflected in the donation forms powered by this theme.
 
