@@ -13,7 +13,7 @@
     <h5>Your Donation</h5>
     {{ givingimpact:donations donation="{{ get:donation }}" related="true" }}
       <p><strong>{{ donation_opportunity }} {{ opportunity_title }} {{ /donation_opportunity }}</strong><br>
-      ${{ donation_donation_total|format_number:2}}
+      ${{ donation_donation_total|money:2}}
       </p>
     {{ /givingimpact:donations }}
   </div>

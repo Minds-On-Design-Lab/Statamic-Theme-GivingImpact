@@ -32,7 +32,7 @@
       <label for="radio1"><input type="radio" name="donation_level_id" value="{{ donation_levels_level_id }}"> ${{ donation_levels_amount|format_number:2 }} - {{ donation_levels_label }}</label>
       {{ /campaign_donation_levels }}
     {{ else }}
-      <input type="text" name="donation_amount" value="{{value_donation_amount}}" Placeholder="20" />
+      <input type="text" name="donation_amount" value="{{value_donation_amount}}" placeholder="20" />
     {{ endif }}
 
     <label class="required">First Name:</label>
