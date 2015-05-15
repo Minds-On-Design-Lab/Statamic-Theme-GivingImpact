@@ -27,8 +27,8 @@
           {{ givingimpact:opportunities supporter="{{ email }}" }}
           <tr>
             <td><a href="{{ path src="teams/{{ opportunity_id_token }}/detail" }}">{{ opportunity_title }}</a></td>
-            <td>${{ opportunity_donation_target|format_number:2 }}</td>
-            <td>${{ opportunity_donation_total|format_number:2}}</td>
+            <td>${{ opportunity_donation_target|money:2 }}</td>
+            <td>${{ opportunity_donation_total|money:2}}</td>
             <td>{{ opportunity_total_donations|format_number}}</td>
           </tr>
           {{ /givingimpact:opportunities }}
@@ -63,7 +63,7 @@
                 &nbsp;
               {{ endif }}
             </td>
-            <td>${{ donation_donation_total|format_number:2}}</td>
+            <td>${{ donation_donation_total|money:2}}</td>
           </tr>
           {{ /givingimpact:donations }}
         </tbody>
